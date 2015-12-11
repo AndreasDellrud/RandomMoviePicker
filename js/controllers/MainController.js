@@ -14,18 +14,15 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		var apiKey = "39829a368ddffdfd9ccb7001d517ec85";
 		$http.get("https://api.themoviedb.org/3/find/"+ movieId +"?external_source=imdb_id&api_key="+apiKey)
 			.success(function(posterData){
-				$scope.randomMovie.Poster = "http://image.tmdb.org/t/p/w500" + posterData.poster_path;
-				console.log($scope.randomMovie.Poster); 
+				$scope.randomMovie.Poster = "http://image.tmdb.org/t/p/w500" + posterData[0].poster_path;
 			})
 	}
-	https://api.themoviedb.org/3/find/tt0468569?external_source=imdb_id&api_key=39829a368ddffdfd9ccb7001d517ec85
+
 	function isOnNetflix(data){
-		console.log(data);
 		var movieName = data.Title;
 		$http.get("http://netflixroulette.net/api/api.php?title="+ movieName)
 		.success(function(rouletteData){
 			$scope.netflixLink = "http://www.netflix.com/title/"+ rouletteData.show_id;
-			//$scope.randomMovie.Poster = rouletteData.poster; 
 			$scope.isMovieOnNetflix = true; 
 		})
 		.error(function(err){
