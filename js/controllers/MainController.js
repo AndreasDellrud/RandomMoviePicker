@@ -18,8 +18,7 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 				};
 				getMoviePoster(data);
 				isOnNetflix(data);
-			})
-				
+			})				
 	}
 	
 	function getMoviePoster(data){
