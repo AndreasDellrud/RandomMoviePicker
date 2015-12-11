@@ -8,6 +8,8 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 				
 	}
 	
+	
+	
 	function isOnNetflix(data){
 		console.log(data);
 		var movieName = data.Title;
@@ -15,8 +17,8 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		$http.get("http://netflixroulette.net/api/api.php?title="+ movieName)
 		.success(function(rouletteData){
 			$scope.netflixLink = "http://www.netflix.com/watch/0?origId="+ rouletteData.show_id;
-		$scope.randomMovie.Poster = rouletteData.poster; 
-			 
+			$scope.randomMovie.Poster = rouletteData.poster; 
+			$scope.isMovieOnNetflix = true; 
 		})
 	}
 	
