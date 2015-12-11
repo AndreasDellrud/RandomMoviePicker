@@ -18,6 +18,13 @@
           <h1>Random movie picker</h1>
           <p>Picks a random movie from IMDB's top 250 movies. <br>Great for the movie evening where you just can't choose!</p>
         </div>
+        <div class="row" style="margin: 3em 3em 3em 3em">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <button ng-click="newMovie()">New random movie</button>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
         <div class="row">
           <div class="col-md-4">
             <img ng-src="{{randomMovie.Poster}}"/>
@@ -41,7 +48,6 @@
                 <br/>
             <a ng-show="isMovieOnNetflix" href="{{netflixLink}}">Watch on Netflix</a>
 
-           <button ng-click="newMovie()" style="float: right">New random movie</button>
               </div>
             </div>
           </div>
