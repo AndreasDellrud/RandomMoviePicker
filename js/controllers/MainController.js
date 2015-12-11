@@ -16,7 +16,7 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		var movieYear = data.Year;
 		$http.get("http://netflixroulette.net/api/api.php?title="+ movieName)
 		.success(function(rouletteData){
-			$scope.netflixLink = "http://www.netflix.com/title/Id="+ rouletteData.show_id;
+			$scope.netflixLink = "http://www.netflix.com/title/"+ rouletteData.show_id;
 			$scope.randomMovie.Poster = rouletteData.poster; 
 			$scope.isMovieOnNetflix = true; 
 		})
