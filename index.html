@@ -26,20 +26,24 @@
             <h1>{{ randomMovie.Title }}</h1>
             <h4>{{randomMovie.Year}}</h4>
             <p>{{randomMovie.Plot}}</p>
-            </br>
+            <br/>
+            <p><b>Director: </b> {{randomMovie.Director}}</p>
+            <p><b>Cast:</b> {{randomMovie.Actors}}</p>
 
+            <br/>
             <p><b>Genre:</b> {{randomMovie.Genre}}</p>  
             <p><b>Rated:</b> {{randomMovie.Rated}}</p>
             <p><b>Length:</b> {{randomMovie.Runtime}}</p>
+            <br/>
 
-            </br>
-            <p><b>Director: </b> {{randomMovie.Director}}</p>
-            <p>{{randomMovie.Actors}}</p>
+                <p><b>Metascore: </b>{{randomMovie.Metascore}}</p>
+                <p><b>IMDB Rating:</b>{{randomMovie.imdbRating}}</p>
+                <br/>
             <a ng-show="isMovieOnNetflix" href="{{netflixLink}}">Watch on Netflix</a>
+
+           <button ng-click="newMovie()" style="float: right">New random movie</button>
               </div>
             </div>
-            </br>
-           <button ng-click="newMovie()">New random movie</button>
           </div>
         </div>
 
