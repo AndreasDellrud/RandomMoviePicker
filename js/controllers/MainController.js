@@ -2,7 +2,20 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 	$scope.newMovie = function(){
 		$http.get("http://www.omdbapi.com/?i="+ getRandomMovieId() +"&plot=short&r=json")
 			.success(function(data){
-				$scope.randomMovie = data;
+				$scope.randomMovie = 
+				{
+					Title: data.Title,
+					Year: data.Year,
+					Plot: data.Plot,
+					Director: data.Director,
+					Actors: data.Actors,
+					Genre: data.Genre,
+					Rated: data.Rated,
+					Runtime: data.Runtime,
+					Metascore: data.Metascore,
+					imdbRating: data.imdbRating,
+					Poster: null	
+				};
 				getMoviePoster(data);
 				isOnNetflix(data);
 			})
@@ -15,7 +28,6 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		$http.get("https://api.themoviedb.org/3/find/"+ movieId +"?external_source=imdb_id&api_key="+apiKey)
 			.success(function(posterData){
 				$scope.randomMovie.Poster = "http://image.tmdb.org/t/p/w342" + posterData.movie_results[0].poster_path;
-				console.log(posterData.movie_results[0].poster_path);
 			})
 	}
 
@@ -28,6 +40,7 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		})
 		.error(function(err){
 			$scope.isMovieOnNetflix = false;
+			$scope.notOnNetflix = "Movie not on Netflix"
 		})
 	}
 	

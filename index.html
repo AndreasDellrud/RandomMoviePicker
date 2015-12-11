@@ -47,7 +47,7 @@
                 <p><b>IMDB Rating:</b>{{randomMovie.imdbRating}}</p>
                 <br/>
             <a ng-show="isMovieOnNetflix" href="{{netflixLink}}">Watch on Netflix</a>
-
+            <p ng-show="!isMovieOnNetflix">{{notOnNetflix}}</p>
               </div>
             </div>
           </div>
