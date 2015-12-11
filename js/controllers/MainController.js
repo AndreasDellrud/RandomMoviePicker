@@ -3,7 +3,21 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		$http.get("http://www.omdbapi.com/?i="+ getRandomMovieId() +"&plot=short&r=json")
 			.success(function(data){
 				$scope.randomMovie = data;
-			})	
+				isOnNetflix(data);
+			})
+				
+	}
+	
+	function isOnNetflix(data){
+		console.log(data);
+		var movieName = data.Title;
+		var movieYear = data.Year;
+		$http.get("http://netflixroulette.net/api/api.php?title="+ movieName)
+		.success(function(rouletteData){
+			$scope.netflixLink = "http://www.netflix.com/watch/0?origId="+ rouletteData.show_id;
+		$scope.randomMovie.Poster = rouletteData.poster; 
+			 
+		})
 	}
 	
 	function getRandomMovieId(){
