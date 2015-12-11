@@ -14,7 +14,8 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 		var apiKey = "39829a368ddffdfd9ccb7001d517ec85";
 		$http.get("https://api.themoviedb.org/3/find/"+ movieId +"?external_source=imdb_id&api_key="+apiKey)
 			.success(function(posterData){
-				$scope.randomMovie.Poster = "http://image.tmdb.org/t/p/w500" + posterData[0].poster_path;
+				$scope.randomMovie.Poster = "http://image.tmdb.org/t/p/w342" + posterData.movie_results[0].poster_path;
+				console.log(posterData.movie_results[0].poster_path);
 			})
 	}
 
