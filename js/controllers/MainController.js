@@ -22,19 +22,22 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 	}
 	
 	$scope.getBadMovie = function(){
-		$http.get("http://www.omdbapi.com/?i="+ getRandomBadMovieId() +"&plot=short&r=json")
+		var movie = getRandomBadMovieId(); 
+		$http.get("http://www.omdbapi.com/?i="+ movie +"&plot=short&r=json")
 			.success(function(data){
-					$scope.randomMovie.Title = data.Title,
-					$scope.randomMovie.Year =  data.Year,
-					$scope.randomMovie.Plot = data.Plot,
-					$scope.randomMovie.Director = data.Director,
-					$scope.randomMovie.Actors = data.Actors,
-					$scope.randomMovie.Genre = data.Genre,
-					$scope.randomMovie.Rated = data.Rated,
-					$scope.randomMovie.Runtime = data.Runtime,
-					$scope.randomMovie.Metascore = data.Metascore,
-					$scope.randomMovie.imdbRating = data.imdbRating,
-					$scope.randomMovie.Poster = null	
+					$scope.randomMovie.Title = data.Title;
+					$scope.randomMovie.Year =  data.Year;
+					$scope.randomMovie.Plot = data.Plot;
+					$scope.randomMovie.Director = data.Director;
+					$scope.randomMovie.Actors = data.Actors;
+					$scope.randomMovie.Genre = data.Genre;
+					$scope.randomMovie.Rated = data.Rated;
+					$scope.randomMovie.Runtime = data.Runtime;
+					$scope.randomMovie.Metascore = data.Metascore;
+					$scope.randomMovie.imdbRating = data.imdbRating;
+					$scope.randomMovie.Poster = null;
+					console.log(data);
+					console.log(movie);	
 				getMoviePoster(data);
 				isOnNetflix(data);
 			})	
@@ -70,7 +73,8 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http){
 	
 	function getRandomBadMovieId(){
 		var b = ["tt4458206", "tt0270846", "tt0421051", "tt4009460", "tt0060666", "tt0417056", "tt0808240", "tt1316037", "tt0330994", "tt1213644", "tt0339034", "tt0463392", "tt0804492", "tt1309000", "tt0364986", "tt0470833", "tt0096870", "tt0830861", "tt0473310", "tt0953989", "tt0317676", "tt0059464", "tt0785077", "tt2071491", "tt0089280", "tt0118589", "tt2344678", "tt0249516", "tt0473024", "tt1623780", "tt0362165", "tt0054673", "tt0096149", "tt0060753", "tt0343788", "tt0086026", "tt1674047", "tt0456014", "tt4404474", "tt0367677", "tt0799949", "tt0061191", "tt0369226", "tt3036740", "tt0057970", "tt0131550", "tt0087258", "tt0252060", "tt0174917", "tt0093405", "tt0058615", "tt0055946", "tt0162930", "tt0299930", "tt0315775", "tt0185183", "tt0081693", "tt0075343", "tt0174685", "tt0057181", "tt0116839", "tt0118836", "tt0469849", "tt0469999", "tt0118665", "tt0057507", "tt0451109", "tt0055562", "tt2814362", "tt0072666", "tt0100665", "tt0066476", "tt0086972", "tt0117550", "tt0058548", "tt0929809", "tt0168172", "tt0318497", "tt0053464", "tt0088772", "tt0092297", "tt1572311", "tt0109376", "tt0382028", "tt0116165", "tt0053241", "tt0112873", "tt0054333", "tt1073498", "tt0073396", "tt0077834", "tt0050717", "tt0088100", "tt0105643", "tt0037798", "tt0804452", "tt0426615", "tt0110169", "tt0099656", "tt0466342"]
+		console.log(b.length);
 		
-		return b[Math.floor((Math.random() * 250))];
+		return b[Math.floor((Math.random() * 100))];
 	};
 }]);
