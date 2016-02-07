@@ -6,60 +6,29 @@
     
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Include the AngularJS library -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
-  <body ng-app="RandomMovieApp">
-
-    <div class="main" ng-controller="MainController" ng-init="newMovie()">
-      <div class="container">
-        <div class="jumbotron">
-          <h1>Random movie picker</h1>
-          <p>Picks a random movie from IMDB's top 250 movies. <br>Great for the movie evening where you just can't choose!</p>
+  <body ng-controller="NavigationController">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a ng-href="/movies/list">Movie</a></li>
+                <li><a ng-href="/users/login">Sign in</a></li>
+                <li><a ng-href="/users/register">Register</a></li>
+            </ul>
         </div>
-        <div class="row" style="margin: 3em 3em 3em 3em">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <button ng-click="newMovie()" class="btn btn-default">New random movie</button>
-          </div>
-          <div class="col-md-4">
-            <button ng-click="getBadMovie()" class="btn btn-default">Get a bad movie instead</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <img ng-src="{{randomMovie.Poster}}"/>
-            </div>
-          <div class="col-md-4">
-            <h1 style="margin-top: 0">{{ randomMovie.Title }}</h1>
-            <h4>{{randomMovie.Year}}</h4>
-            <p style="height: 7em">{{randomMovie.Plot}}</p>
-            <br/>
-            <p><b>Director: </b> {{randomMovie.Director}}</p>
-            <p><b>Cast:</b> {{randomMovie.Actors}}</p>
-
-            <br/>
-            <p><b>Genre:</b> {{randomMovie.Genre}}</p>  
-            <p><b>Rated:</b> {{randomMovie.Rated}}</p>
-            <p><b>Length:</b> {{randomMovie.Runtime}}</p>
-            <br/>
-
-                <p><b>Metascore: </b>{{randomMovie.Metascore}}</p>
-                <p><b>IMDB Rating:</b>{{randomMovie.imdbRating}}</p>
-                <br/>
-            <a ng-show="isMovieOnNetflix" class="btn btn-default" href="{{netflixLink}}">Watch on Netflix</a>
-            <p ng-show="!isMovieOnNetflix">{{notOnNetflix}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="container-fluid" ng-view>
+        
+    </div>
 
     <!-- Modules -->
-    <script src="js/app.js"></script>
+    <script src="js/controllers/NavigationController.js"></script>
 
     <!-- Controllers -->
-    <script src="js/controllers/MainController.js"></script>
+    <script src="js/controllers/MovieController.js"></script>
 
     <!-- Services -->
     <script src="js/services/getmovie.js"></script>
