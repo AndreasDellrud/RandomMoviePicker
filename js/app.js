@@ -1,1 +1,5 @@
-var app = angular.module('RandomMovieApp', ['ngRoute']);
+/**
+ * app.js
+ */
+'use strict';
+angular.module('RandomMoviePicker', ['ngRoute', 'firebase']);    

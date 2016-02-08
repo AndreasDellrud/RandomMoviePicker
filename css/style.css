@@ -1,0 +1,11 @@
+.moved{
+    margin-left: 2em; 
+    padding-left: 2em;
+}
+
+.poster{
+    margin-left: 0;
+    margin-right: 2em;
+    padding-left: 0;
+    padding-right: 0;
+}
