@@ -46,7 +46,6 @@ app.controller('MovieController', ['$scope', '$http', function($scope, $http){
                     console.log(movie);	
                 getMoviePoster(data);
                 isOnNetflix(data);
-                $scope.loaded = true;
             })	
     };
     
